@@ -25,7 +25,7 @@ class AsyncOWMClient:
                     return True
 
     async def current_by_zip(self, zip_code: int):
-        request = self.url + f"&zip={str(zip_code)},us"
+        request = f"{self.url}&zip={str(zip_code)},us"
         async with aiohttp.ClientSession() as session:
             async with session.get(request) as response:
                 json = await response.json()
