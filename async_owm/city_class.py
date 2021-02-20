@@ -1,19 +1,17 @@
-from dataclasses import dataclass
-
 from .helpers import *
 import json
 
 
 class City:
-    def __init__(self, city_json):
+    def __init__(self, city_json, unit):
         self.name = city_json.get("name")
         self.city_json = city_json
 
         main = city_json.get("main")
-        self.temp_current = pretty_temp(main.get("temp"))
-        self.temp_low = pretty_temp(main.get("temp_min"))
-        self.temp_high = pretty_temp(main.get("temp_max"))
-        self.feels_like = pretty_temp(main.get("feels_like"))
+        self.temp_current = pretty_temp(main.get("temp"), unit)
+        self.temp_low = pretty_temp(main.get("temp_min"), unit)
+        self.temp_high = pretty_temp(main.get("temp_max"), unit)
+        self.feels_like = pretty_temp(main.get("feels_like"), unit)
         self.pressure = main.get("pressure")
         self.humidity = main.get("humidity")
 

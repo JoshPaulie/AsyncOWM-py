@@ -25,6 +25,12 @@ async def main():
 asyncio.run(main())
 ```
 
+```py
+Norman feels like 60°F
+Norman coords -97.4841, 35.199
+Norman weather [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01d'}]
+```
+
 ## Author's note
 This was made as a learning experience, and as my first public package.
 I will need help writing tests and properly structuring everything.

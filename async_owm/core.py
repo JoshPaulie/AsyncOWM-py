@@ -1,16 +1,18 @@
 import aiohttp
 from .city_class import City
+from .data_enums import Unit
 
 
 class AsyncOWMClient:
-    def __init__(self, owm_key: str, units: str = "imperial"):
+    def __init__(self, owm_key: str, unit: Unit = Unit.Imperial, country: str = "us"):
         self.owm_key = owm_key
-        self.units = units
+        self.unit = unit
         self.url = self.build_url()
+        self.country = country
 
     def build_url(self):
         base_url = "http://api.openweathermap.org/data/2.5/weather"
-        url = f"{base_url}?appid={self.owm_key}&units={self.units}"
+        url = f"{base_url}?appid={self.owm_key}&units={self.unit.name}"
         return url
 
     def print_url(self):
@@ -25,8 +27,9 @@ class AsyncOWMClient:
                     return True
 
     async def current_by_zip(self, zip_code: int):
-        request = f"{self.url}&zip={str(zip_code)},us"
+        """Returns a City object, searchable by zip code"""
+        request = f"{self.url}&zip={str(zip_code)},{self.country}"
         async with aiohttp.ClientSession() as session:
             async with session.get(request) as response:
                 json = await response.json()
-                return City(json)
+                return City(json, self.unit)
