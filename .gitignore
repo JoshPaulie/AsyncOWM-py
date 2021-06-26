@@ -5,3 +5,4 @@ venv/
 test_wrapper.py
 __pycache__/
 *.pyc
+/async_owm/__pycache__
