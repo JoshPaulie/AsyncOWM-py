@@ -1,8 +1,2 @@
-pip-log.txt
-pip-delete-this-directory.txt
-venv/
-.idea/
-test_wrapper.py
-__pycache__/
 *.pyc
-/async_owm/__pycache__
+/__pycache__/
