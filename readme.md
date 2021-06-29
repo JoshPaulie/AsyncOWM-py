@@ -37,9 +37,9 @@ Norman coords -97.4841, 35.199
 Norman weather [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01d'}]
 ```
 ## TODO
-Setup.py
-More robust classes
-Additional lookup methods other than zipcode
+- Setup.py
+- More robust classes
+- Additional lookup methods other than zipcode
 
 ### Author's note
 This was made as a learning experience, and is my first public package.
