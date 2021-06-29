@@ -26,7 +26,7 @@ class AsyncOWMClient:
                 else:
                     return True
 
-    async def current_by_zip(self, zip_code: int):
+    async def city_by_zip(self, zip_code: int):
         """Returns a City object, searchable by zip code"""
         request = f"{self.url}&zip={str(zip_code)},{self.country}"
         async with aiohttp.ClientSession() as session:
