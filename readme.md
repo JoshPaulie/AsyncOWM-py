@@ -24,22 +24,28 @@ async def main():
     client.print_url()
     norman = await client.city_by_zip(73072)
     print("Norman feels like", norman.feels_like)
-    print(f"Norman coords {norman.coord_lon}, {norman.coord_lat}")
-    print("Norman weather", norman.weather)
+    print(f"Norman coords {norman.longitude}, {norman.latitude}")
+    print("Norman has", norman.weather_description)
+    print(norman.print_data())
 
 
 asyncio.run(main())
 ```
 
 ```py
-Norman feels like 60°F
-Norman coords -97.4841, 35.199
-Norman weather [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01d'}]
+http://api.openweathermap.org/data/2.5/weather?appid=APIKEY&units=Imperial
+Norman feels like 91°F
+Norman coords -97.4841, 35.199   
+Norman has clear sky
+{
+  ...
+}
 ```
 ## TODO
 - Setup.py
 - More robust classes
 - Additional lookup methods other than zipcode
+- Add expections for invalid api key, 404 error
 
 ### Author's note
 This was made as a learning experience, and is my first public package.

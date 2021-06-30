@@ -14,8 +14,9 @@ async def main():
     client.print_url()
     norman = await client.city_by_zip(73072)
     print("Norman feels like", norman.feels_like)
-    print(f"Norman coords {norman.coord_lon}, {norman.coord_lat}")
-    print("Norman weather", norman.weather)
+    print(f"Norman coords {norman.longitude}, {norman.latitude}")
+    print("Norman has", norman.weather_description)
+    print(norman.print_data())
 
 
 asyncio.run(main())
