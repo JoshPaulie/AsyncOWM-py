@@ -15,11 +15,22 @@ class City:
         self.pressure = main.get("pressure")
         self.humidity = main.get("humidity")
 
-        coords = city_json.get("coord")
-        self.coord_lon = coords.get("lon")
-        self.coord_lat = coords.get("lat")
+        self.timezone = city_json.get("timezone")
 
-        self.weather = city_json.get("weather")
+        coords = city_json.get("coord")
+        self.longitude = coords.get("lon")
+        self.latitude = coords.get("lat")
+
+        weather = city_json.get("weather")
+        self.weather_id = weather[0]["id"]
+        self.weather_main = weather[0]["main"]
+        self.weather_description = weather[0]["description"]
+        self.weather_icon = weather[0]["icon"]
+
+        wind = city_json.get("wind")
+        self.wind_speed = wind.get("speed")
+        self.wind_deg = wind.get("deg")
+        self.wind_gust = wind.get("gust")
 
     def print_data(self):
         data = json.dumps(self.city_json, indent=2)
