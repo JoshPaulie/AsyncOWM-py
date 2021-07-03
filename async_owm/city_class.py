@@ -3,6 +3,8 @@ import json
 
 
 class City:
+    """Parses city data from passed json file"""
+
     def __init__(self, city_json, unit):
         self.name = city_json.get("name")
         self.city_json = city_json
@@ -29,7 +31,7 @@ class City:
 
         wind = city_json.get("wind")
         self.wind_speed = wind.get("speed")
-        self.wind_deg = wind.get("deg")
+        self.wind_degree = wind.get("deg")
         self.wind_gust = wind.get("gust")
 
     def print_data(self):
