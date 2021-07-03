@@ -38,11 +38,12 @@ Norman feels like 91°F
 Norman coords -97.4841, 35.199   
 Norman has clear sky
 {
-  ...
+  ... # Json data
 }
 ```
 ## TODO
-- Setup.py
+- `Setup.py`
+- Move away from current weather api and use all-in-one api instead
 - More robust classes
 - Additional lookup methods other than zipcode
 - Add expections for invalid api key, 404 error
