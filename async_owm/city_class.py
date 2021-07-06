@@ -1,11 +1,13 @@
-from .helpers import pretty_temp
 import json
+
+from .helpers import pretty_temp
 
 
 class City:
     """Parses city data from passed json file"""
 
     def __init__(self, city_json, unit):
+        """👋🏻 Thanks for checking out this repo! This is mess and I have no idea how to improve it."""
         self.name = city_json.get("name")
         self.city_json = city_json
 
@@ -33,6 +35,18 @@ class City:
         self.wind_speed = wind.get("speed")
         self.wind_degree = wind.get("deg")
         self.wind_gust = wind.get("gust")
+
+        self.dt = city_json.get("dt")
+
+        sys = city_json.get("sys")
+        self.sys_type = sys.get("type")
+        self.sys_country = sys.get("country")
+        self.sys_sunrise = sys.get("sunrise")
+        self.sys_sunset = sys.get("sunset")
+
+        self.clouds = city_json.get("clouds").get("all")
+
+        self.visibility = city_json.get("visibility")
 
     def print_data(self):
         data = json.dumps(self.city_json, indent=2)
