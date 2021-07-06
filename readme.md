@@ -47,6 +47,7 @@ Norman has clear sky
 - More robust classes
 - Additional lookup methods other than zipcode
 - Add expections for invalid api key, 404 error
+- Country code enums
 
 ### Author's note
 This was made as a learning experience, and is my first public package.
