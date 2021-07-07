@@ -4,7 +4,7 @@ import os
 # This is not a dependency, optional way to load OWM token
 from dotenv import find_dotenv, load_dotenv
 
-from async_owm import AsyncOWMClient as OwmClient
+from AsyncOWM_py import AsyncOWMClient as OwmClient
 
 load_dotenv(find_dotenv())
 client = OwmClient(owm_key=os.getenv("OWM"))

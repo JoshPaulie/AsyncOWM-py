@@ -1,4 +1,4 @@
-from .city_class import City
+from .city import City
 from .data_enums import Unit
 from .helpers import check_request
 
