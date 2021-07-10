@@ -14,40 +14,36 @@ import os
 # This is not a dependency, optional way to load OWM token
 from dotenv import find_dotenv, load_dotenv
 
-from async_owm import AsyncOWMClient as OwmClient
+from AsyncOWM_py import AsyncOWMClient as OwmClient
 
 load_dotenv(find_dotenv())
 client = OwmClient(owm_key=os.getenv("OWM"))
 
 
 async def main():
-    client.print_url()
     norman = await client.city_by_zip(73072)
+    # Temps can be returned as float, rounded int, or "pretty" str, which adds the unit and ° symbol
+    # If you don't convert, it simply returns the pretty str
+    print("Norman current", float(norman.temp_current)) 
     print("Norman feels like", norman.feels_like)
     print(f"Norman coords {norman.longitude}, {norman.latitude}")
     print("Norman has", norman.weather_description)
-    print(norman.print_data())
 
 
 asyncio.run(main())
 ```
 
 ```py
-http://api.openweathermap.org/data/2.5/weather?appid=APIKEY&units=Imperial
-Norman feels like 91°F
-Norman coords -97.4841, 35.199   
+Norman current 87.4
+Norman feels like 94°F
+Norman coords -97.4841, 35.199
 Norman has clear sky
-{
-  ... # Json data
-}
 ```
 ## TODO
 - `Setup.py`
 - Move away from current weather api and use all-in-one api instead
-- More robust classes
-- Additional lookup methods other than zipcode
-- Add expections for invalid api key, 404 error
 - Country code enums
+- Raw temp
 
 ### Author's note
 This was made as a learning experience, and is my first public package.

@@ -11,12 +11,13 @@ client = OwmClient(owm_key=os.getenv("OWM"))
 
 
 async def main():
-    client.print_url()
     norman = await client.city_by_zip(73072)
+    # Temps can be returned as float, rounded int, or "pretty" str, which adds the unit and ° symbol
+    # If you don't convert, it simply returns the pretty str
+    print("Norman current", float(norman.temp_current))
     print("Norman feels like", norman.feels_like)
     print(f"Norman coords {norman.longitude}, {norman.latitude}")
     print("Norman has", norman.weather_description)
-    print(norman.print_data())
 
 
 asyncio.run(main())

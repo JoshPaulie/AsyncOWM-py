@@ -28,3 +28,22 @@ async def check_request(request):
                 )
             elif cod == 200:
                 return city_json
+
+
+class Temp:
+    def __init__(self, temp: float, unit: Unit):
+        self.temp = temp
+        self.unit = unit
+        self.pretty = pretty_temp(self.temp, self.unit)
+
+    def __int__(self):
+        return int(self.temp)
+
+    def __str__(self):
+        return self.pretty
+
+    def __float__(self):
+        return self.temp
+
+    def __repr__(self):
+        return f"{self.temp}, {self.unit}, {self.pretty}"

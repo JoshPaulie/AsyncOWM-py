@@ -1,6 +1,6 @@
 import json
 
-from .helpers import pretty_temp
+from .helpers import pretty_temp, Temp
 
 
 class City:
@@ -12,10 +12,11 @@ class City:
         self.name = self.json.get("name")
 
         main = self.json.get("main")
-        self.temp_current = pretty_temp(main.get("temp"), unit)
-        self.temp_low = pretty_temp(main.get("temp_min"), unit)
-        self.temp_high = pretty_temp(main.get("temp_max"), unit)
-        self.feels_like = pretty_temp(main.get("feels_like"), unit)
+        self.temp_current = Temp(main.get("temp"), unit)
+        self.temp_low = Temp(main.get("temp_min"), unit)
+        self.temp_high = Temp(main.get("temp_max"), unit)
+        self.feels_like = Temp(main.get("feels_like"), unit)
+
         self.pressure = main.get("pressure")
         self.humidity = main.get("humidity")
 
