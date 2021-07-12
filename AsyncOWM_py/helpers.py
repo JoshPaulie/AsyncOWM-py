@@ -1,4 +1,5 @@
 import aiohttp
+from functools import total_ordering
 
 from .custom_errors import CityNotFoundError, InvalidAPIKeyError, WrongLatitudeError
 from .data_enums import Unit
@@ -30,6 +31,7 @@ async def check_request(request):
                 return city_json
 
 
+@total_ordering
 class Temp:
     def __init__(self, temp: float, unit: Unit):
         self.temp = temp
@@ -47,3 +49,9 @@ class Temp:
 
     def __repr__(self):
         return f"{self.temp}, {self.unit}, {self.pretty}"
+
+    def __eq__(self, other):
+        return self.temp == other.temp
+
+    def __lt__(self, other):
+        return self.temp < other.temp
