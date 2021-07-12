@@ -40,10 +40,12 @@ Norman coords -97.4841, 35.199
 Norman has clear sky
 ```
 ## TODO
-- `Setup.py`
-- Move away from current weather api and use all-in-one api instead
+- Move away from current weather api and use all-in-one api instead. 
 - Country code enums
-- Raw temp
+
+### Comments on OWM
+The OWM api is wonky. The returned data isn't always how you'd expect it and the geo-coordinate lookup function is very finicky.
+**The surefire way to lookup a city is by zip code.**
 
 ### Author's note
 This was made as a learning experience, and is my first public package.
