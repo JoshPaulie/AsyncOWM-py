@@ -1,6 +1,6 @@
 from .city import City
 from .data_enums import Unit
-from .helpers import check_request
+from .helpers import make_request
 
 
 class AsyncOWMClient:
@@ -21,14 +21,14 @@ class AsyncOWMClient:
     async def city_by_zip(self, zip_code: int) -> City:
         """Returns a City object, searchable by zip code"""
         request = f"{self.url}&zip={str(zip_code)},{self.country}"
-        return City(await check_request(request), self.unit)
+        return City(await make_request(request), self.unit)
 
     async def city_by_geo_coord(self, lat: float, lon: float) -> City:
         """VERY BUGGY - Returns a City object, searchable by longitude, latitude"""
         request = f"{self.url}&lat={lat}&lon={lon}"
-        return City(await check_request(request), self.unit)
+        return City(await make_request(request), self.unit)
 
     async def city_by_city_id(self, city_id: int) -> City:
         """Returns a City object, searchable by OWM's City ID"""
         request = f"{self.url}&id={city_id}"
-        return City(await check_request(request), self.unit)
+        return City(await make_request(request), self.unit)

@@ -12,7 +12,7 @@ def pretty_temp(temp: int, unit: Unit) -> str:
     return temp_str
 
 
-async def check_request(request):
+async def make_request(request):
     """Checks passed URL. Returns json if successful, otherwise raises error"""
     async with aiohttp.ClientSession() as session:
         async with session.get(request) as response:
