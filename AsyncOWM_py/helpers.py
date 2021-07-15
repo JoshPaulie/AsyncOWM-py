@@ -30,7 +30,7 @@ class Temp:
         self.unit = unit
         self.pretty = self.pretty_temp(self.temp, self.unit)
 
-    def pretty_temp(self, temp: int, unit: Unit) -> str:
+    def pretty_temp(self, temp: float, unit: Unit) -> str:
         """Returns rounded temp with unit and ° symbol"""
         symbol = unit.value[0]
         temp = round(temp)
@@ -47,7 +47,7 @@ class Temp:
         return self.temp
 
     def __repr__(self):
-        return f"{self.temp}, {self.unit}, {self.pretty}"
+        return f"Temp({self.temp}, {self.unit}, {self.pretty})"
 
     def __eq__(self, other):
         return self.temp == other.temp
