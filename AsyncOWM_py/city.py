@@ -1,6 +1,6 @@
 import json
 
-from .helpers import pretty_temp, Temp
+from .helpers import Temp
 
 
 class City:

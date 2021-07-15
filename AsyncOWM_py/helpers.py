@@ -5,14 +5,6 @@ from .custom_errors import CityNotFoundError, InvalidAPIKeyError, WrongLatitudeE
 from .data_enums import Unit
 
 
-def pretty_temp(temp: int, unit: Unit) -> str:
-    """Returns rounded temp with unit and ° symbol"""
-    symbol = unit.value[0]
-    temp = round(temp)
-    temp_str = f"{str(temp)}°{symbol}"
-    return temp_str
-
-
 async def make_request(request):
     """Checks passed URL. Returns json if successful, otherwise raises error"""
     async with aiohttp.ClientSession() as session:
@@ -36,7 +28,14 @@ class Temp:
     def __init__(self, temp: float, unit: Unit):
         self.temp = temp
         self.unit = unit
-        self.pretty = pretty_temp(self.temp, self.unit)
+        self.pretty = self.pretty_temp(self.temp, self.unit)
+
+    def pretty_temp(self, temp: int, unit: Unit) -> str:
+        """Returns rounded temp with unit and ° symbol"""
+        symbol = unit.value[0]
+        temp = round(temp)
+        temp_str = f"{str(temp)}°{symbol}"
+        return temp_str
 
     def __int__(self):
         return int(self.temp)
