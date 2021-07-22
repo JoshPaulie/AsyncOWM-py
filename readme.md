@@ -1,7 +1,7 @@
 # An Async, Pythonic, OpenWeatherMap Wrapper
 
 ## About
-**AsyncOWM-py** is, predictably, an async wrapper for the OpenWeatherMap API written in Python
+**AsyncOWM-py** is, predictably, an async wrapper for "current weather data" from the OpenWeatherMap API written in Python.
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -40,12 +40,16 @@ Norman coords -97.4841, 35.199
 Norman has clear sky
 ```
 ## TODO
-- Move away from current weather api and use all-in-one api instead. 
-- Country code enums
+- Wait for PRs 😉
 
-### Comments on OWM
+## Comments on OWM
 The OWM api is wonky. The returned data isn't always how you'd expect it and the geo-coordinate lookup function is very finicky.
-**The surefire way to lookup a city is by zip code.**
 
-### Author's note
+**The surefire way to lookup a city is by city name.**
+
+*Second best option is by zipcode. City code is also very good but getting your city's code is not so easy.*
+
+---
+
+## Author's note
 This was made as a learning experience, and is my first public package.
