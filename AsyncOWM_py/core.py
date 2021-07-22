@@ -18,6 +18,14 @@ class AsyncOWMClient:
     def print_url(self):
         print(self.url)
 
+    async def city_by_city_name(self, city_name: int, state_code: str = None) -> City:
+        """Returns a City object, searchable by OWM's City ID"""
+        if state_code:
+            request = f"{self.url}&q={city_name},{state_code},{self.country}"
+        else:
+            request = f"{self.url}&q={city_name}"
+        return City(await make_request(request), self.unit)
+
     async def city_by_zip(self, zip_code: int) -> City:
         """Returns a City object, searchable by zip code"""
         request = f"{self.url}&zip={str(zip_code)},{self.country}"
@@ -26,6 +34,7 @@ class AsyncOWMClient:
     async def city_by_geo_coord(self, lat: float, lon: float) -> City:
         """VERY BUGGY - Returns a City object, searchable by longitude, latitude"""
         request = f"{self.url}&lat={lat}&lon={lon}"
+        print(request)
         return City(await make_request(request), self.unit)
 
     async def city_by_city_id(self, city_id: int) -> City:
