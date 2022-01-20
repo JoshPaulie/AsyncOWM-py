@@ -1,5 +1,7 @@
 # An Async, Pythonic, OpenWeatherMap Wrapper
 
+⚠️ This is not a functional package, as I don't see a real need for it. If anyone would like it published on PyPi, create an issue. 
+
 ## About
 **AsyncOWM-py** is, predictably, an async wrapper for "current weather data" from the OpenWeatherMap API written in Python.
 
